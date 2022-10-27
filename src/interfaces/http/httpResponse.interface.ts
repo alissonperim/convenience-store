@@ -1,23 +1,18 @@
 export interface IHttpResponse {
     code: number
     message?: string
+    obj?: any
 }
 
-export class HttpResponse implements IHttpResponse {
-    constructor(readonly code, readonly message) {}
-
-    created() {
-        return {
-            code: this.code,
-            message: this.message
-        }
+export const created = (): IHttpResponse => {
+    return {
+        code: 201
     }
+}
 
-    ok(obj: any) {
-        return {
-            code: this.code,
-            message: this.message,
-            ...obj,
-        }
+export const ok = (obj: any): IHttpResponse => {
+    return {
+        code: 200,
+        obj,
     }
 }
