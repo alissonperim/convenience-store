@@ -2,6 +2,7 @@ import { ProductEntity } from '@entities/products'
 import { AppDataSource } from 'src/data'
 import { IProductsRepository } from 'src/interfaces/repositories'
 import { ICreateProduct } from 'src/interfaces/requestObjects'
+import { inject, injectable } from 'tsyringe'
 import { Repository } from 'typeorm'
 
 export class ProductRepository implements IProductsRepository {

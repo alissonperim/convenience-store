@@ -1,17 +1,21 @@
 import { Request } from 'express'
 import { created, IHttpResponse } from 'src/interfaces/http'
+import { ICreateProduct } from 'src/interfaces/requestObjects'
 import { ICreateProductService } from 'src/interfaces/services/createProduct.interface'
+import { inject, injectable } from 'tsyringe'
 
+@injectable()
 export class CreateProductController {
-    constructor(readonly service: ICreateProductService){}
-    async execute(req: Request): Promise<IHttpResponse> {
-        const {
-            barcode,
-            factoryPrice,
-            name,
-            price,
-        } = req.body
-
+    constructor(
+        @inject('CreateProductService')
+        readonly service: ICreateProductService
+    ){}
+    async execute({
+        name,
+        barcode,
+        price,
+        factoryPrice,
+    }: ICreateProduct): Promise<IHttpResponse> {
         try {
             await this.service.execute({
                 barcode,
