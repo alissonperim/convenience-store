@@ -20,10 +20,9 @@ export const AppDataSource = new DataSource({
     password: DB_PW,
     database: DB_NAME,
     entities: [
-        BaseEntity,
         ProductEntity,
     ],
     migrations: [
-        "./migrations/*.ts"
+        "./src/data/migrations/*.ts"
     ]
 })

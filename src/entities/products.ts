@@ -1,15 +1,17 @@
 import { Column, Entity } from 'typeorm'
 import { BaseEntity } from './base'
 
-@Entity()
+@Entity({
+    name: 'products'
+})
 export class ProductEntity extends BaseEntity {
     @Column()
     name: string
 
-    @Column("double")
+    @Column("decimal")
     price: number
 
-    @Column("double")
+    @Column("decimal")
     factoryPrice: number
 
     @Column()
