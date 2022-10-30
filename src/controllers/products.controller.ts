@@ -1,14 +1,13 @@
-import { Request } from 'express'
-import { created, IHttpResponse } from 'src/interfaces/http'
-import { ICreateProduct } from 'src/interfaces/requestObjects'
-import { ICreateProductService } from 'src/interfaces/services/createProduct.interface'
+import { created, IHttpResponse } from '../interfaces/http'
+import { ICreateProduct } from '../interfaces/requestObjects'
+import { ICreateProductService } from '../interfaces/services'
 import { inject, injectable } from 'tsyringe'
 
 @injectable()
 export class CreateProductController {
     constructor(
         @inject('CreateProductService')
-        readonly service: ICreateProductService
+        private readonly service: ICreateProductService
     ){}
     async execute({
         name,
@@ -16,6 +15,7 @@ export class CreateProductController {
         price,
         factoryPrice,
     }: ICreateProduct): Promise<IHttpResponse> {
+        console.log('Entrou no controller')
         try {
             await this.service.execute({
                 barcode,

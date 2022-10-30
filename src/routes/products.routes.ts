@@ -1,11 +1,12 @@
 import { Request, Router } from 'express'
-import { CreateProductController } from 'src/controllers/products.controller'
-import { ICreateProduct } from 'src/interfaces/requestObjects'
+import { CreateProductController } from '../controllers/products.controller'
+import { ICreateProduct } from '../interfaces/requestObjects'
 import { container } from 'tsyringe'
 
 export const routs = Router()
 
 routs.post('/', (req: Request) => {
+    console.log('ENTROU AQUI?')
     const controller = container.resolve(CreateProductController)
     const {
         name,

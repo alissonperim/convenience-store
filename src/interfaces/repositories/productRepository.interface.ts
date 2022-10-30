@@ -1,4 +1,4 @@
-import { ProductEntity } from '@entities/products'
+import { ProductEntity } from '../../entities/products'
 import { ICreateProduct } from '../requestObjects'
 
 export interface IProductsRepository {

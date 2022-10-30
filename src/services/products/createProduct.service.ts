@@ -1,6 +1,6 @@
-import { IProductsRepository } from 'src/interfaces/repositories'
-import { ICreateProduct } from 'src/interfaces/requestObjects'
-import { ICreateProductService } from 'src/interfaces/services'
+import { IProductsRepository } from '../../interfaces/repositories'
+import { ICreateProduct } from '../../interfaces/requestObjects'
+import { ICreateProductService } from '../../interfaces/services'
 import { inject, injectable } from 'tsyringe'
 
 @injectable()
@@ -11,6 +11,7 @@ export class CreateProductService implements ICreateProductService {
     ) {}
 
     async execute({ name, barcode, price, factoryPrice }: ICreateProduct) {
+        console.log('Entrou no service')
         const barcodeIsAlreadyRegistered = await this.productRepo.findByBarCode(barcode)
 
         if (barcodeIsAlreadyRegistered) {

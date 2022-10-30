@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import 'dotenv/config'
-import { BaseEntity } from '@entities/base'
-import { ProductEntity } from '@entities/products'
+import { BaseEntity } from '../entities/base'
+import { ProductEntity } from '../entities/products'
 import { DataSource } from 'typeorm'
 
 const {
