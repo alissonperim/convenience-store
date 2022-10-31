@@ -10,6 +10,9 @@ AppDataSource
     .then(() => {
         console.log("DB connection open")
     })
+    .catch((e) => {
+        console.log(e)
+    })
 
 
 router.use(`/${version}/products`, products)

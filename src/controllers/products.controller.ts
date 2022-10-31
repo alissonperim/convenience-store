@@ -15,7 +15,6 @@ export class CreateProductController {
         price,
         factoryPrice,
     }: ICreateProduct): Promise<IHttpResponse> {
-        console.log('Entrou no controller')
         try {
             await this.service.execute({
                 barcode,
@@ -26,7 +25,7 @@ export class CreateProductController {
 
             return created()
         } catch (error) {
-            
+            throw new Error(error?.message)
         }
 
     }

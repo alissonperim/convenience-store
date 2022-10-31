@@ -1,14 +1,13 @@
 import { ProductEntity } from '../entities/products'
 import { AppDataSource } from '../data'
 import { IProductsRepository } from 'src/interfaces/repositories'
-import { ICreateProduct } from 'src/interfaces/requestObjects'
+import { ICreateProduct } from '../interfaces/requestObjects'
 import { Repository } from 'typeorm'
 
 export class ProductRepository implements IProductsRepository {
+    readonly dbcontext: Repository<ProductEntity> = AppDataSource.getRepository(ProductEntity)
 
-    constructor(
-        readonly dbcontext: Repository<ProductEntity> = AppDataSource.getRepository(ProductEntity)
-    ){}
+    constructor(){}
 
     async create({ name, barcode, factoryPrice, price }: ICreateProduct): Promise<void> {
         const product = this.dbcontext.create({
@@ -21,11 +20,11 @@ export class ProductRepository implements IProductsRepository {
         await this.dbcontext.save(product)
     }
 
-    async findByBarCode(barcode: string): Promise<ProductEntity> {
+    async findByBarcode(barcode: string): Promise<ProductEntity> {
         return this.dbcontext
             .createQueryBuilder('product')
             .where('product.barcode = :barcode', { barcode })
-            .getOneOrFail()
+            .getOne()
     }
 
     async list(): Promise<ProductEntity[]>{

@@ -11,8 +11,7 @@ export class CreateProductService implements ICreateProductService {
     ) {}
 
     async execute({ name, barcode, price, factoryPrice }: ICreateProduct) {
-        console.log('Entrou no service')
-        const barcodeIsAlreadyRegistered = await this.productRepo.findByBarCode(barcode)
+        const barcodeIsAlreadyRegistered = await this.productRepo.findByBarcode(barcode)
 
         if (barcodeIsAlreadyRegistered) {
             throw new Error('A product with this barcode is already registered')
