@@ -32,6 +32,6 @@ export class ProductRepository implements IProductsRepository {
     }
 
     async getById(id: string): Promise<ProductEntity> {
-        return this.dbcontext.findOneByOrFail({ id })
+        return this.dbcontext.findOneBy({ id })
     }
 }

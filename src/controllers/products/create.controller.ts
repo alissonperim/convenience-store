@@ -1,6 +1,6 @@
-import { created, IHttpResponse } from '../interfaces/http'
-import { ICreateProduct } from '../interfaces/requestObjects'
-import { ICreateProductService } from '../interfaces/services'
+import { created, IHttpResponse } from '../../interfaces/http'
+import { ICreateProduct } from '../../interfaces/requestObjects'
+import { ICreateProductService } from '../../interfaces/services'
 import { inject, injectable } from 'tsyringe'
 
 @injectable()

@@ -1,29 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "ES2019",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-
-    /* Modules */
     "module": "commonjs",
+    "outDir": "./build",
     "rootDir": "./",
     "baseUrl": ".",
     "paths": {
-      "@entities/*": ["src/entities/*"]
+      "@entities/*": ["src/entities/*"],
+      "@services/*": ["src/services/*"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@controllers/*": ["src/controllers/*"]
     },
-    "allowJs": true, 
-    "outDir": "./", 
+    "allowJs": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true, 
     "strict": false, 
-    "skipLibCheck": true
   },
-  "include": [
-    "src/**/**/*.*.ts",
-    "src/**/*.*.ts",
-    "src/**/*.ts",
-    "src/*.ts"
-  ],
   "exclude": [
     "node_modules",
   ]
